@@ -18,3 +18,5 @@ License
 Please refer to the LICENSE in the repo
 
 ![Alt text](Planner.jpg)
+
+Adding in more random text so I can git add and hopefully redeploy the website....unsure why its taking forever to deploy
