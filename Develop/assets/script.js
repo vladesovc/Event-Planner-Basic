@@ -3,9 +3,9 @@
 // in the html.
 
 // The below function will ensure that the code isnt run until the the browser has rendered all elements in the HTML
-$(document).ready(function() {
+$(document).ready(function () {
 
-//  this loads your past saved events and will display them and load them in the correct areas
+  //  this loads your past saved events and will display them and load them in the correct areas
   for (let i = 9; i <= 17; i++) {
     const savedEvent = localStorage.getItem(`hour-${i}`);
     if (savedEvent) {
@@ -19,8 +19,8 @@ $(document).ready(function() {
       $('#dateTime').text(dateTimeString);
     }
   }
- // this is the save event for saving to local storage
-  $(".saveBtn").on("click", function() {
+  // this is the save event for saving to local storage
+  $(".saveBtn").on("click", function () {
     const hour = $(this).closest(".time-block").attr("class");
     const eventDescription = $(this).siblings(".description").val();
     localStorage.setItem(hour, eventDescription);
@@ -29,10 +29,10 @@ $(document).ready(function() {
   // function to update Time lock styles but I cant seem to figure out why it isnt working - I'm going crazy trying to get these to pair properly
   function updateTimeBlockStyles() {
     const currentHour = dayjs().hour();
-  
-    $(".time-block").each(function() {
+
+    $(".time-block").each(function () {
       const hour = parseInt($(this).attr("class").split('-')[1]);
-  
+
       if (hour < currentHour) {
         $(this).addClass('past').removeClass('present future');
       } else if (hour === currentHour) {
@@ -41,9 +41,9 @@ $(document).ready(function() {
         $(this).addClass('future').removeClass('past present');
       }
     });
-  }  
-// jQuery event listener look for a save button click and it should retrieve the hour from the parent time block class - saving the hour and the text inside
-  $(".saveBtn").on("click", function() {
+  }
+  // jQuery event listener look for a save button click and it should retrieve the hour from the parent time block class - saving the hour and the text inside
+  $(".saveBtn").on("click", function () {
     const hour = $(this).closest(".time-block").attr("class");
     const eventDescription = $(this).siblings(".description").val();
     localStorage.setItem(hour, eventDescription);
@@ -52,7 +52,7 @@ $(document).ready(function() {
     updateTimeBlockStyles();
   });
 
- // Update styles every hour
+  // Update styles every hour
   updateTimeBlockStyles();
   setInterval(updateTimeBlockStyles, 3600000);
 
