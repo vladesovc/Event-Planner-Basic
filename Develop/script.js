@@ -61,4 +61,3 @@ $(document).ready(function() {
   setInterval(updateDateTime, 1000);
 
 });
-
